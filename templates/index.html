@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertex AI PaLM API Chat Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .chat-container {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 20px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      #chat-form {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      #user-input {
+        flex-grow: 1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+      }
+
+      #submitBtn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      #submitBtn:hover {
+        background-color: #45a049;
+      }
+
+      #result {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #f8f8f8;
+        min-height: 100px;
+        overflow-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1100px; margin: 20px auto; padding: 25px; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); background-color: #ffffff;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 25px;">
+        <div>
+            <h2 style="margin: 0; color: #1e293b; font-size: 28px; font-weight: 700;">der Mond</h2>
+            <p style="margin: 4px 0 0 0; color: #64748b; font-size: 15px;">AI Pioneer & Gemini Integration Lead | Specializing in Generative AI Solutions.</p>
+        </div>
+        <div>
+            <button style="background-color: #4c1d95; color: white; border: none; padding: 10px 22px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 14px; margin-right: 12px;">Contact Me ✉</button>
+            <button style="background-color: white; color: #334155; border: 1px solid #cbd5e1; padding: 10px 22px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 14px;">Download CV ⬇</button>
+        </div>
+    </div>
+
+    <h3 style="color: #0f172a; font-size: 22px; margin-top: 0; margin-bottom: 20px;">Featured Insights & Projects</h3>
+    <div style="display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 35px;">
+        <div style="flex: 2; min-width: 350px;">
+            <img src="/static/portfolio.png" alt="Gemini Integration Showcase" style="width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);">
+        </div>
+        <div style="flex: 1; min-width: 280px; background-color: #f8fafc; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h4 style="margin-top: 0; color: #1e293b; font-size: 18px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">Key Project: Gemini Implementation</h4>
+                <ul style="padding-left: 20px; color: #475569; font-size: 14px; line-height: 1.8;">
+                    <li><strong>Project Goal:</strong> Transform team collaboration.</li>
+                    <li><strong>Core Technology:</strong> Gemini Pro & Flash LLMs.</li>
+                    <li><strong>Outcome:</strong> 30% Efficiency Boost.</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #1e293b; font-size: 16px; margin-bottom: 12px;">Skills & Expertise</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span style="background: #f3e8ff; color: #6b21a8; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Generative AI Strategy</span>
+                    <span style="background: #f3e8ff; color: #6b21a8; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Gemini LLM API</span>
+                    <span style="background: #f3e8ff; color: #6b21a8; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Python</span>
+                    <span style="background: #f3e8ff; color: #6b21a8; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">User Experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 style="color: #0f172a; font-size: 20px; border-top: 2px solid #f1f5f9; padding-top: 25px; margin-bottom: 15px;">Ask Gemini AI</h3>
+</div>
+
+    <div class="chat-container">
+      <h1>Gemini Chat</h1>
+      <form id="chat-form">
+        <input
+          type="text"
+          id="user-input"
+          name="user_input"
+          placeholder="Your query..."
+        />
+        <button type="submit" id="submitBtn">Send</button>
+      </form>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        document
+          .getElementById("chat-form")
+          .addEventListener("submit", function (event) {
+            // Prevent the form from submitting and refreshing the page
+            event.preventDefault();
+
+            let userInput = document.getElementById("user-input").value;
+            let url = `/gemini?user_input=${encodeURIComponent(userInput)}`;
+
+            fetch(url)
+              .then((response) => response.json())
+              .then((data) => {
+                let content = data.content;
+                let resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = content;
+              })
+              .catch((error) => {
+                console.error("Error fetching Gemini response:", error);
+              });
+          });
+      };
+    </script>
+  </body>
+</html>
