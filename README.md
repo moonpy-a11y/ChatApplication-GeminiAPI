@@ -2,7 +2,8 @@
 
 This application demonstrates a Cloud Run application that has a simple Form-based UI that represents a Chat widget. You can put in your query and it will invoke the PaLM Chat Bison model in the background.
 
-![Flask Chat App Screen](../assets/flaskapp-screen.png "Flask Chat App")
+## Application UI
+![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
 
 ## Build and Deploy the application to Cloud Run
 
@@ -50,5 +51,4 @@ To deploy the Flask Application in [Cloud Run](https://cloud.google.com/run/docs
     ```
 On successfully deployment, you will be provided a URL to the Cloud Run service. You can visit that in the browser to view the application that you just deployed. Give it a few queries of your choice.
 
-## Application UI
-![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
+
