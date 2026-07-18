@@ -1,8 +1,8 @@
 # Cloud Run application with Web UI that demonstrates working with Vertex AI API
 
-This application demonstrates a Cloud Run application that has a simple Form-based UI that represents a Chat widget. You can put in your query and it will invoke the PaLM Chat Bison model in the background and get back the response. It is a simple example but something that you can look to embed into your larger web application.
+This application demonstrates a Cloud Run application that has a simple Form-based UI that represents a Chat widget. You can put in your query and it will invoke the PaLM Chat Bison model in the background.
 
-![Flask Chat App Screen](UI Images/Screenshot 2026-07-18 073627.png "Flask Chat App")
+![Flask Chat App Screen](../assets/flaskapp-screen.png "Flask Chat App")
 
 ## Build and Deploy the application to Cloud Run
 
@@ -25,7 +25,7 @@ To deploy the Flask Application in [Cloud Run](https://cloud.google.com/run/docs
     export GCP_PROJECT='<Your GCP Project Id>'  # Change this
     export GCP_REGION='us-central1'             # If you change this, make sure region is supported by Model Garden. When in doubt, keep this.
     ```
-2. We are now going to build the Docker image for the application and push it to Artifact Registry. To do this, we will need one environment variable set that will point to the Artifact Registry name. We have a command that will create this repository for you.
+2. We are now going to build the Docker image for the application and push it to Artifact Registry. To do this, we will need one environment variable set that will point to the Artifact Registry name.
 
    In Cloud Shell, execute the following commands:
    ```bash
@@ -48,12 +48,7 @@ To deploy the Flask Application in [Cloud Run](https://cloud.google.com/run/docs
       --project=$GCP_PROJECT \
       --set-env-vars=GCP_PROJECT=$GCP_PROJECT,GCP_REGION=$GCP_REGION
     ```
-On successfully deployment, you will be provided a URL to the Cloud Run service. You can visit that in the browser to view the application that you just deployed. Give it a few queries of your choice and the application will query the Vertex AI Chat Model and provide you with the response. 
-
-
-## Application UI
-![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
-
+On successfully deployment, you will be provided a URL to the Cloud Run service. You can visit that in the browser to view the application that you just deployed. Give it a few queries of your choice.
 
 ## Application UI
 ![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
