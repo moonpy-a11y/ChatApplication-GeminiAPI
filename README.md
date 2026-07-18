@@ -1,6 +1,6 @@
 # Cloud Run application with Web UI that demonstrates working with Vertex AI API
 
-This application demonstrates a Cloud Run application that has a simple Form-based UI that represents a Chat widget. You can put in your query and it will invoke the PaLM Chat Bison model in the background.
+AI-powered chat application using Cloud Run on Google Cloud. The chat application is powered by the Gemini Large Language Model's (LLM) APIs.
 
 ## Application UI
 ![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
