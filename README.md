@@ -54,3 +54,6 @@ On successfully deployment, you will be provided a URL to the Cloud Run service.
 ## Application UI
 ![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
 
+
+## Application UI
+![Chat Application UI](UI%20Images/Screenshot%202026-07-18%20073627.png)
